@@ -38,16 +38,30 @@ avoided)
 # risk = 0.6
 
 # look at person "#7" and plug their info into the regression equation
-# bid = 20
+# bid = 20 <- not sure how to find the bid value for a 60% reduction
 # NEP = 50
 # income = middle
 # age = 30 
-# income = middle # for some reason the middle income beta is not showing up in my regression not sure why, for now I will state that this participant is "poor"
+# income = middle <- for some reason the middle income beta is not showing                      up in my regression not sure why, for now I will                           state that this participant is "poor"
 
 p_7<- function(x){0.1196977 + 0.0204401*1 + 0.0027386*1 + 0.0158639*50 + 0.0007445*x - 0.0010699*20}
 
 p_7(60)
 # 0.9593434 <- I think this is this persons probability to vote for the program
+
+#Look at person #10
+# bid = 40
+# NEO = 32
+# Income = poor
+# age = 30
+# risk = 60
+
+p_10<- function(x){ 0.1196977 + 0.0204401*1 + 0.0027386*1 + 0.0158639*32 + 0.0007445*x - 0.0010699*40}
+
+p_10(60)
+# 0.6523952
+
+
 
 
 

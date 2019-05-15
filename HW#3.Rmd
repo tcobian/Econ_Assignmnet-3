@@ -42,9 +42,13 @@ avoided)
 # NEP = 50
 # income = middle
 # age = 30 
-# income = middle 
+# income = middle # for some reason the middle income beta is not showing up in my regression not sure why, for now I will state that this participant is "poor"
 
-p_7<- 0.1196977 + 0.0204401(1) -0.0201190(0) + 0.0099816(0)  -0.0162261(0) + 0.0027386(poor) + 0.0074891(rich) + 0.0467922(very_rich) + 0.0088282(one_percent) + 0.0158639(50) + 0.0007445(60) - 0.0010699(20)
+p_7<- function(x){0.1196977 + 0.0204401*1 + 0.0027386*1 + 0.0158639*50 + 0.0007445*x - 0.0010699*20}
+
+p_7(60)
+# 0.9593434 <- I think this is this persons probability to vote for the program
+
 
 
 

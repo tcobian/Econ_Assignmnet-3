@@ -28,7 +28,30 @@ table_vote_lm<- stargazer(vote_lm)
 
 ```
 2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths
-avoided)
+avoided) (4% reduction in risk = 1 whale saved)
+
+```{r}
+# A 4% reduction in risk = 1 whale saved
+# to find this out I am changing the risk of the 3 random people looked at in #3 and chaging the risk from 60-64
+# their responding change in bid should equal their WTP for 1 whale
+
+
+bid_7(60) # 446.7733
+bid_7(64) # 449.5568
+
+wtp_7<- bid_7(64) - bid_7(60)
+wtp_7 #2.783438
+
+wtp_10<- bid_10(64) - bid_10(60)
+wtp_10 # 2.783438
+
+wtp_1<- bid_1(64) - bid_1(60)
+wtp_1 # 2.783438
+
+# the overall willingness to pay for a whale in SB is 2.783438, this will be consistant among all people becasue we are using a linear model (lm) not a (glm)
+
+```
+
 
 
 3. Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction. 
@@ -55,7 +78,7 @@ avoided)
 
 # 1 =  0.1196977 + 0.0204401*1 + 0.0158639*50 + 0.0007445*60 - 0.0010699*x
 
-bid_7<- function(x){(0.1196977 + 0.0204401*1 + 0.0158639*50 + 0.0007445*x - 1)/0.0010699}
+bid_7<- function(x){(0.1196977 + 0.0204401*1 + 0.0158639*50 + 0.0007445*x - 0.5)/0.0010699}
 bid_7(60)
 
 # bid = -20.56005
@@ -73,9 +96,9 @@ bid_7(60)
 
 # x = (0.1196977 + 0.0204401*1 + 0.0027386*1 + 0.0158639*32 + 0.0007445*x - 1)/0.0010699
 
-p_10<- function(x){ (0.1196977 + 0.0204401*1 + 0.0027386*1 + 0.0158639*32 + 0.0007445*x - 1)/0.0010699}
+bid_10<- function(x){ (0.1196977 + 0.0204401*1 + 0.0027386*1 + 0.0158639*32 + 0.0007445*x - 0.5)/0.0010699}
 
-p_10(60)
+bid_10(60)
 # bid = -284.8947
 ###########################################################
 
@@ -92,9 +115,9 @@ p_10(60)
 
 # x = (0.1196977 + 0.0204401*1 + 0.0467922*1 + 0.0158639*15 + 0.0007445*60 -1)/0.0010699
 
-p_1<- function(x){(0.1196977 + 0.0204401*1 + 0.0467922*1 + 0.0158639*15 + 0.0007445*x -1)/0.0010699}
+bid_1<- function(x){(0.1196977 + 0.0204401*1 + 0.0467922*1 + 0.0158639*15 + 0.0007445*x -0.5)/0.0010699}
 
-p_1(60)
+bid_1(60)
 # bid = -485.7861
 ```
 4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.

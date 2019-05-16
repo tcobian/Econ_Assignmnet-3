@@ -96,6 +96,12 @@ p_1<- function(x){(0.1196977 + 0.0204401*1 + 0.0467922*1 + 0.0158639*15 + 0.0007
 
 p_1(60)
 # bid = -485.7861
+```
+4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
+
+```{r}
+
+
 
 ```
 

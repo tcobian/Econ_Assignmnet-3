@@ -126,6 +126,20 @@ bid_1(60)
 # take the average amonst all of the values, average NEP, average income = median, have to see the mode of age levels to see what age bracket has the most people in it then use that age braket for the averge. 
 # create a equation for bid using these values and find the bid value for a 60% reduction
 
+# make a table of the averages
+
+
+  
+
+  
+  
+
+
+
+
+
+
+
 
 
 ```

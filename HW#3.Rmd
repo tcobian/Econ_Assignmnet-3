@@ -195,6 +195,18 @@ total_cost - total_benefit # the benefits outweigh the costs where costs - benef
 
 ```{r}
 # at a 60% reduction will cost the ship $1000 but also result in 20 fewer tonn of CO2 per trip
+# 20 tonn = 1000 in costs
+
+cost_per_tonn<- 1000/20
+cost_per_tonn # 50 dollars per tonn reduced
+
+# If the price of the carbon credit Z were anything above $50 then the shipping company will adopt the policy
+
+```
+
+8. Now suppose the carbon credit price is exactly Z*, so all ships voluntarily reduce speed toachieve the 60% risk reduction. Approximately how many whales would be saved by this? Whatwould be the social value of allowing ships to enter the carbon trading market?
+
+```{r}
 
 
 
@@ -203,7 +215,6 @@ total_cost - total_benefit # the benefits outweigh the costs where costs - benef
 
 
 ```
-
 
 
 

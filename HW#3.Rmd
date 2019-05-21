@@ -123,24 +123,49 @@ bid_1(60)
 4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
 
 ```{r}
-# take the average amonst all of the values, average NEP, average income = median, have to see the mode of age levels to see what age bracket has the most people in it then use that age braket for the averge. 
+# take the average amonst all of the values, average NEP, average income = medium, have to see the mode of age levels to see what age bracket has the most people in it then use that age braket for the averge. 
+
 # create a equation for bid using these values and find the bid value for a 60% reduction
 
 # make a table of the averages
 
+# make income and age number so that their modes show up in the summary table 
+data_new<- mutate(data, case_when(income == "poor" ~ 0,
+                                  income == "middle" ~ 1,
+                                  income == "rich" ~ 2,
+                                  income == "very_rich" ~ 3,
+                                  income == "one_percent" ~ 4,),
+                  case_when(age == "tothirty" ~ 30,
+                                  age == "toforty" ~ 40,
+                                  age == "tofifty" ~ 50,
+                                  age == "tosixty" ~ 6))
+data_new
 
+names(data_new)<- c("risk", "bid", "vote", "nep", "income", "age", "income_num", "age_num")
   
-
   
-  
+data_table<- data_new %>%
+  summarise(
+    mean_nep = mean(nep),
+    mode_age = mode(age_num),
+    mode_income = mode(income_num)
+  )
+# mean NEP = 38.366
+# most common age = 30
+# average income = medium
 
+# plug in these values and find the WTP for a 60% reduction
 
+# vote = 0.1196977 + 0.0204401(age_30) -0.0201190(age_40) + 0.0099816(age_50)  -0.0162261(age_60) + 0.0027386(poor) + 0.0074891(rich) + 0.0467922(very_rich) + 0.0088282(one_percent) + 0.0158639(NEP) + 0.0007445(risk) - 0.0010699(bid)
 
+# 0.5 + 0.0010699(bid) = 0.1196977 + 0.0204401(age_30) -0.0201190(age_40) + 0.0099816(age_50)  -0.0162261(age_60) + 0.0027386(poor) + 0.0074891(rich) + 0.0467922(very_rich) + 0.0088282(one_percent) + 0.0158639(NEP) + 0.0007445(risk) 
 
+# (bid) = (0.1196977 + 0.0204401(age_30) -0.0201190(age_40) + 0.0099816(age_50)  -0.0162261(age_60) + 0.0027386(poor) + 0.0074891(rich) + 0.0467922(very_rich) + 0.0088282(one_percent) + 0.0158639(NEP) + 0.0007445(risk) - 0.5)/0.0010699
 
+bid_mean<- function(x){(0.1196977 + 0.0204401*1 + 0.0158639*38.366 + 0.0007445*x - 0.5)/0.0010699}
 
-
-
+bid_mean(60)
+# avergae WTP = 274.2707
 
 ```
 

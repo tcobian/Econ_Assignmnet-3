@@ -179,9 +179,30 @@ total_benefit<- 2.783438*15*15000
 total_benefit # total benefit to sb for a 60% reduction is 626273.6
 
 ```
+6. Based only on these benefits, do the benefits of the VSR program outweigh the costs?
+
+```{r}
+# take the wtp and multiply is by the number of people
+# then compare it to the total benefit solved for in problem 5
+
+total_cost<- 15000*274.2707
+total_cost
+
+total_cost - total_benefit # the benefits outweigh the costs where costs - benefits = 3487787
+
+```
+7. Suppose the price of a carbon credit is $Z per ton, at what price Z* will the shipping industry decide to adopt the VSR for purely self-interested reasons? (Note: if ships voluntarily reduce speed, then the $7 million cost (noted above) of implementing the VSR would be avoided)
+
+```{r}
+# at a 60% reduction will cost the ship $1000 but also result in 20 fewer tonn of CO2 per trip
 
 
 
+
+
+
+
+```
 
 
 

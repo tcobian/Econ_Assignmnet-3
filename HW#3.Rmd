@@ -209,7 +209,7 @@ cost_per_tonn # 50 dollars per tonn reduced
 ```{r}
 # the number of whales saved a year with a 60% reduction would ential 15 whales saved
 
-# to find the social value of the carbon program in the chanel I think you would take the amount of whales saved and multiply it by the 
+# to find the social value of the carbon program in the chanel I think you would take the vlaue we got in problem 6 then add the profit from problem #7
 
 
 

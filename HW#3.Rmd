@@ -81,7 +81,7 @@ wtp_1 # 2.783438
 bid_7<- function(x){(0.1196977 + 0.0204401*1 + 0.0158639*50 + 0.0007445*x - 0.5)/0.0010699}
 bid_7(60)
 
-# bid = -20.56005
+# bid = 446.7733
 #######################################################
 #Look at person #10
 # bid = ?
@@ -99,7 +99,7 @@ bid_7(60)
 bid_10<- function(x){ (0.1196977 + 0.0204401*1 + 0.0027386*1 + 0.0158639*32 + 0.0007445*x - 0.5)/0.0010699}
 
 bid_10(60)
-# bid = -284.8947
+# bid = 182.4387
 ###########################################################
 
 # person 1
@@ -118,7 +118,7 @@ bid_10(60)
 bid_1<- function(x){(0.1196977 + 0.0204401*1 + 0.0467922*1 + 0.0158639*15 + 0.0007445*x -0.5)/0.0010699}
 
 bid_1(60)
-# bid = -485.7861
+# bid = -28.45266
 ```
 4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
 
@@ -204,9 +204,12 @@ cost_per_tonn # 50 dollars per tonn reduced
 
 ```
 
-8. Now suppose the carbon credit price is exactly Z*, so all ships voluntarily reduce speed toachieve the 60% risk reduction. Approximately how many whales would be saved by this? Whatwould be the social value of allowing ships to enter the carbon trading market?
+8. Now suppose the carbon credit price is exactly Z*, so all ships voluntarily reduce speed toachieve the 60% risk reduction. Approximately how many whales would be saved by this? What would be the social value of allowing ships to enter the carbon trading market?
 
 ```{r}
+# the number of whales saved a year with a 60% reduction would ential 15 whales saved
+
+# to find the social value of the carbon program in the chanel I think you would take the amount of whales saved and multiply it by the 
 
 
 

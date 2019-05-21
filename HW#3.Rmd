@@ -168,6 +168,17 @@ bid_mean(60)
 # avergae WTP = 274.2707
 
 ```
+5. If there are 150,000 households in Santa Barbara County, estimate the total benefit of a VSR program to these households
+
+```{r}
+# a 60% reduction would lead to 15 whales saved 
+# Before we solved that each person values each whale worth 2.783438
+# multiply the wtp per whale by the population
+
+total_benefit<- 2.783438*15*15000
+total_benefit # total benefit to sb for a 60% reduction is 626273.6
+
+```
 
 
 

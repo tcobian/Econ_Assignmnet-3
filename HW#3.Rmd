@@ -2,7 +2,9 @@
 title: "HW#3"
 author: "Tyler Cobian"
 date: "5/15/2019"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -10,38 +12,56 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(stargazer)
 ```
-load the data
+
 ```{r, include=FALSE}
+#load the data
 data<- read_csv("HW3Data.csv")
 ```
-1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression
-coefficients.
-```{r, results='asis'}
+
+
+```{r, results='asis', messages=FALSE, include=FALSE}
+
+# 1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.
 vote_lm<- lm(vote ~ age + income + NEP + risk + bid, data = data)
-vote_lm
-summary(vote_lm)
+#summary(vote_lm)
 
 # vote = 0.1196977 + 0.0204401(age_30) -0.0201190(age_40) + 0.0099816(age_50)  -0.0162261(age_60) + 0.0027386(poor) + 0.0074891(rich) + 0.0467922(very_rich) + 0.0088282(one_percent) + 0.0158639(NEP) + 0.0007445(risk) - 0.0010699(bid)
+```
 
+
+
+```{r, results='asis', echo=FALSE, message=FALSE}
 # stargazer for the results
 table_vote_lm<- stargazer(vote_lm)
 
 ```
+
+
+
+
+
+
+
+
+```{r}
 ####Explain what the correlation coefficients mean
-For every unit increase in level of risk reduction, the respondent is more likely to vote yes by 0.004169 units. 
-For every unit increase in annual payment for the household, the respondent is less likely to vote yes by 0.005865 units. 
-For every unit increase in measure of environmental concern, the respondent is more likely to vote yes by 0.083213 units. 
-Earning an income in the one-percent makes the respondent 0.059366 units more likely to vote yes.
-Earning a poor income makes the respondent 0.040298 units more likely to vote yes.
-Earning a rich income makes the respondent 0.060219 units more likely to vote yes.
-Earning a very rich income makes the respondent 0.277879 units more likely to vote yes.
-Each unit increase in age until 30 makes the respondent 0.092936 units more likely to vote yes.
-Each unit increase in age until 40 makes the respondent 0.127045 units less likely to vote yes.
-Each unit increase in age until 60 makes the respondent 0.107886 units less likely to vote yes.
+```
+####For every unit increase in level of risk reduction, the respondent is more likely to vote yes by 0.004169 units. 
+####For every unit increase in annual payment for the household, the respondent is less likely to vote yes by 0.005865 units. 
+####For every unit increase in measure of environmental concern, the respondent is more likely to vote yes by 0.083213 units. 
+####Earning an income in the one-percent makes the respondent 0.059366 units more likely to vote yes.
+####Earning a poor income makes the respondent 0.040298 units more likely to vote yes.
+####Earning a rich income makes the respondent 0.060219 units more likely to vote yes.
+####Earning a very rich income makes the respondent 0.277879 units more likely to vote yes.
+####Each unit increase in age until 30 makes the respondent 0.092936 units more likely to vote yes.
+####Each unit increase in age until 40 makes the respondent 0.127045 units less likely to vote yes.
+####Each unit increase in age until 60 makes the respondent 0.107886 units less likely to vote yes.
 
-$$Odds(Voting Yes) = 0.1196977 + \beta_1(Risk) + \beta_2(BID) +  \beta_3 + (NEP)+\beta_4(Income) + \beta_5(Age)$$
+$$Odds(Voting Yes) = 0.1197 + \beta_1(Risk) + \beta_2(BID) +  \beta_3 + (NEP)+\beta_4(Income) + \beta_5(Age)$$
 
-$$Odds(Voting~Yes) = 0.1196977 + 0.0204401(Age_30_) -0.0201190(Age_40_) + 0.0099816(Age_50__)  -0.0162261(Age_60_) + 0.0027386(Poor) + 0.0074891(Rich) + 0.0467922(Very~Rich) + 0.0088282(One~Percent) + 0.0158639(NEP) + 0.0007445(Risk) - 0.0010699(BID)$$
+#### 
+$$Odds(Voting~Yes) = 0.11970 + 0.02044(Age30) -0.02012(Age40) + 0.00998(Age50)-0.01623(Age60) 
++ 0.00274(Poor) + 0.00749(Rich) + 0.04679(Very~Rich) + 0.00882(One~Percent) + 0.01586(NEP) + 0.00074(Risk) - 0.00107(BID)$$
 
 
 2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths
@@ -181,22 +201,24 @@ data_new<- mutate(data, "income_num" = case_when(income == "poor" ~ 0,
                                   income == "middle" ~ 1,
                                   income == "rich" ~ 2,
                                   income == "very_rich" ~ 3,
-                                  income == "one_percent" ~ 4,),
+                                  income == "one_percent" ~ 4),
                   "age_num" = case_when(age == "tothirty" ~ 30,
                                   age == "toforty" ~ 40,
                                   age == "tofifty" ~ 50,
                                   age == "tosixty" ~ 6))
 data_new
 
-names(data_new)<- c("risk", "bid", "vote", "nep", "income", "age", "income_num", "age_num")
+#names(data_new)<- c("risk", "bid", "vote", "nep", "income", "age", "income_num", "age_num")
   
   
-data_table<- data_new %>%
+data_table_sum <- data_new %>%
   summarise(
-    mean_nep = mean(nep),
+    mean_nep = mean(NEP),
     mode_age = mode(age_num),
     mode_income = mode(income_num)
   )
+
+data_table_sum
 # mean NEP = 38.366
 # most common age = 30
 # average income = medium

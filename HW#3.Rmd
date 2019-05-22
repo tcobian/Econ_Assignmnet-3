@@ -27,10 +27,27 @@ summary(vote_lm)
 table_vote_lm<- stargazer(vote_lm)
 
 ```
+####Explain what the correlation coefficients mean
+For every unit increase in level of risk reduction, the respondent is more likely to vote yes by 0.004169 units. 
+For every unit increase in annual payment for the household, the respondent is less likely to vote yes by 0.005865 units. 
+For every unit increase in measure of environmental concern, the respondent is more likely to vote yes by 0.083213 units. 
+Earning an income in the one-percent makes the respondent 0.059366 units more likely to vote yes.
+Earning a poor income makes the respondent 0.040298 units more likely to vote yes.
+Earning a rich income makes the respondent 0.060219 units more likely to vote yes.
+Earning a very rich income makes the respondent 0.277879 units more likely to vote yes.
+Each unit increase in age until 30 makes the respondent 0.092936 units more likely to vote yes.
+Each unit increase in age until 40 makes the respondent 0.127045 units less likely to vote yes.
+Each unit increase in age until 60 makes the respondent 0.107886 units less likely to vote yes.
+
+$$Odds(Voting Yes) = 0.1196977 + \beta_1(Risk) + \beta_2(BID) +  \beta_3 + (NEP)+\beta_4(Income) + \beta_5(Age)$$
+
+$$Odds(Voting~Yes) = 0.1196977 + 0.0204401(Age_30_) -0.0201190(Age_40_) + 0.0099816(Age_50__)  -0.0162261(Age_60_) + 0.0027386(Poor) + 0.0074891(Rich) + 0.0467922(Very~Rich) + 0.0088282(One~Percent) + 0.0158639(NEP) + 0.0007445(Risk) - 0.0010699(BID)$$
+
+
 2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths
 avoided) (4% reduction in risk = 1 whale saved)
 
-```{r}
+#```{r}
 # A 4% reduction in risk = 1 whale saved
 # to find this out I am changing the risk of the 3 random people looked at in #3 and chaging the risk from 60-64
 # their responding change in bid should equal their WTP for 1 whale
@@ -50,7 +67,7 @@ wtp_1 # 2.783438
 
 # the overall willingness to pay for a whale in SB is 2.783438, this will be consistant among all people becasue we are using a linear model (lm) not a (glm)
 
-```
+
 
 
 
@@ -65,6 +82,11 @@ wtp_1 # 2.783438
 
 # if they are "middle income" put nothing in for income becasue this is the refrence value and is what all of the other incomes are compared to so its beta = 0 
 ##################
+```
+
+
+```{r}
+
 
 
 # risk = 0.6
@@ -120,6 +142,31 @@ bid_1<- function(x){(0.1196977 + 0.0204401*1 + 0.0467922*1 + 0.0158639*15 + 0.00
 bid_1(60)
 # bid = -28.45266
 ```
+#Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deathsavoided) (4% reduction in risk = 1 whale saved)
+
+```{r}
+# A 4% reduction in risk = 1 whale saved
+# to find this out I am changing the risk of the 3 random people looked at in #3 and chaging the risk from 60-64
+# their responding change in bid should equal their WTP for 1 whale
+
+
+bid_7(60) # 446.7733
+bid_7(64) # 449.5568
+
+wtp_7<- bid_7(64) - bid_7(60)
+wtp_7 #2.783438
+
+wtp_10<- bid_10(64) - bid_10(60)
+wtp_10 # 2.783438
+
+wtp_1<- bid_1(64) - bid_1(60)
+wtp_1 # 2.783438
+
+# the overall willingness to pay for a whale in SB is 2.783438, this will be consistant among all people becasue we are using a linear model (lm) not a (glm)
+
+```
+
+
 4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
 
 ```{r}
@@ -130,12 +177,12 @@ bid_1(60)
 # make a table of the averages
 
 # make income and age number so that their modes show up in the summary table 
-data_new<- mutate(data, case_when(income == "poor" ~ 0,
+data_new<- mutate(data, "income_num" = case_when(income == "poor" ~ 0,
                                   income == "middle" ~ 1,
                                   income == "rich" ~ 2,
                                   income == "very_rich" ~ 3,
                                   income == "one_percent" ~ 4,),
-                  case_when(age == "tothirty" ~ 30,
+                  "age_num" = case_when(age == "tothirty" ~ 30,
                                   age == "toforty" ~ 40,
                                   age == "tofifty" ~ 50,
                                   age == "tosixty" ~ 6))

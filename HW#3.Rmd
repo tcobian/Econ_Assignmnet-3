@@ -3,8 +3,8 @@ title: "HW#3"
 author: "Tyler Cobian"
 date: "5/15/2019"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -23,7 +23,7 @@ data<- read_csv("HW3Data.csv")
 
 # 1. Create a linear probability model that predicts a respondent’s probability of voting ‘yes’ on the ballot based on their age, income, NEP score, the risk reduction offered by the program, and the cost of the program to that respondent. Show the model and interpret the regression coefficients.
 vote_lm<- lm(vote ~ age + income + NEP + risk + bid, data = data)
-#summary(vote_lm)
+summary(vote_lm)
 
 # vote = 0.1196977 + 0.0204401(age_30) -0.0201190(age_40) + 0.0099816(age_50)  -0.0162261(age_60) + 0.0027386(poor) + 0.0074891(rich) + 0.0467922(very_rich) + 0.0088282(one_percent) + 0.0158639(NEP) + 0.0007445(risk) - 0.0010699(bid)
 ```
@@ -35,18 +35,11 @@ vote_lm<- lm(vote ~ age + income + NEP + risk + bid, data = data)
 table_vote_lm<- stargazer(vote_lm)
 
 ```
+NEED TO PUT IN THE MODEL HERE AND FIGURE OUT HOW TO PUT IT AFTER STARGAZER AND ON 2 LINES
 
-
-
-
-
-
-
-
-```{r}
 ####Explain what the correlation coefficients mean
-```
-####For every unit increase in level of risk reduction, the respondent is more likely to vote yes by 0.004169 units. 
+STILL NEEED TO PUT IN UPDATED VALUES
+For every unit increase in level of risk reduction, the respondent is more likely to vote yes by units. 
 ####For every unit increase in annual payment for the household, the respondent is less likely to vote yes by 0.005865 units. 
 ####For every unit increase in measure of environmental concern, the respondent is more likely to vote yes by 0.083213 units. 
 ####Earning an income in the one-percent makes the respondent 0.059366 units more likely to vote yes.
@@ -64,46 +57,16 @@ $$Odds(Voting~Yes) = 0.11970 + 0.02044(Age30) -0.02012(Age40) + 0.00998(Age50)-0
 + 0.00274(Poor) + 0.00749(Rich) + 0.04679(Very~Rich) + 0.00882(One~Percent) + 0.01586(NEP) + 0.00074(Risk) - 0.00107(BID)$$
 
 
+
+
+
+
+
+
+
+
 2. Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths
 avoided) (4% reduction in risk = 1 whale saved)
-
-#```{r}
-# A 4% reduction in risk = 1 whale saved
-# to find this out I am changing the risk of the 3 random people looked at in #3 and chaging the risk from 60-64
-# their responding change in bid should equal their WTP for 1 whale
-
-
-bid_7(60) # 446.7733
-bid_7(64) # 449.5568
-
-wtp_7<- bid_7(64) - bid_7(60)
-wtp_7 #2.783438
-
-wtp_10<- bid_10(64) - bid_10(60)
-wtp_10 # 2.783438
-
-wtp_1<- bid_1(64) - bid_1(60)
-wtp_1 # 2.783438
-
-# the overall willingness to pay for a whale in SB is 2.783438, this will be consistant among all people becasue we are using a linear model (lm) not a (glm)
-
-
-
-
-
-3. Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction. 
-```{r}
-# not sure whos model to use but for now I will use my regression
-
-###################
-# For this portion put age, NEP, Income, risk (60), and age into the equation
-# next set the equation = nd solve for the bid vlaue
-# once yo have the bid value put all of the inputs into the regression eqaution and solve for vote
-
-# if they are "middle income" put nothing in for income becasue this is the refrence value and is what all of the other incomes are compared to so its beta = 0 
-##################
-```
-
 
 ```{r}
 
@@ -162,7 +125,6 @@ bid_1<- function(x){(0.1196977 + 0.0204401*1 + 0.0467922*1 + 0.0158639*15 + 0.00
 bid_1(60)
 # bid = -28.45266
 ```
-#Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deathsavoided) (4% reduction in risk = 1 whale saved)
 
 ```{r}
 # A 4% reduction in risk = 1 whale saved
@@ -186,6 +148,22 @@ wtp_1 # 2.783438
 
 ```
 
+3. Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction. 
+```{r}
+# not sure whos model to use but for now I will use my regression
+
+###################
+# For this portion put age, NEP, Income, risk (60), and age into the equation
+# next set the equation = nd solve for the bid vlaue
+# once yo have the bid value put all of the inputs into the regression eqaution and solve for vote
+
+# if they are "middle income" put nothing in for income becasue this is the refrence value and is what all of the other incomes are compared to so its beta = 0 
+
+
+#basically you already did this above
+##################
+```
+
 
 4. Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.
 
@@ -205,20 +183,21 @@ data_new<- mutate(data, "income_num" = case_when(income == "poor" ~ 0,
                   "age_num" = case_when(age == "tothirty" ~ 30,
                                   age == "toforty" ~ 40,
                                   age == "tofifty" ~ 50,
-                                  age == "tosixty" ~ 6))
+                                  age == "tosixty" ~ 60))
 data_new
 
 #names(data_new)<- c("risk", "bid", "vote", "nep", "income", "age", "income_num", "age_num")
   
-  
-data_table_sum <- data_new %>%
+
+
+data_table_mode <- data_new %>%
   summarise(
     mean_nep = mean(NEP),
     mode_age = mode(age_num),
     mode_income = mode(income_num)
   )
 
-data_table_sum
+data_table_mode
 # mean NEP = 38.366
 # most common age = 30
 # average income = medium
@@ -231,10 +210,20 @@ data_table_sum
 
 # (bid) = (0.1196977 + 0.0204401(age_30) -0.0201190(age_40) + 0.0099816(age_50)  -0.0162261(age_60) + 0.0027386(poor) + 0.0074891(rich) + 0.0467922(very_rich) + 0.0088282(one_percent) + 0.0158639(NEP) + 0.0007445(risk) - 0.5)/0.0010699
 
+# i don't see income here..
 bid_mean<- function(x){(0.1196977 + 0.0204401*1 + 0.0158639*38.366 + 0.0007445*x - 0.5)/0.0010699}
 
 bid_mean(60)
 # avergae WTP = 274.2707
+
+#with income:
+bid_mean_income<- function(x){(0.1196977 + 0.0204401*1 + 0.0158639*38.366 + 0.0088282*1 + 0.0007445*x - 0.5)/0.0010699}
+
+bid_mean_income(60)
+#WTP with "rich" income 281.2705
+
+
+
 
 ```
 5. If there are 150,000 households in Santa Barbara County, estimate the total benefit of a VSR program to these households
@@ -253,11 +242,19 @@ total_benefit # total benefit to sb for a 60% reduction is 6262736
 ```{r}
 # take the wtp and multiply is by the number of people
 # then compare it to the total benefit solved for in problem 5
+#I'm unsure about the cost. Doesn't it say that its $7 million? I'm confused..
 
 total_cost<- 150000*274.2707
 total_cost
 
-total_cost - total_benefit # the benefits outweigh the costs where costs - benefits = 34877870
+#or cost = 281.2705
+
+total_cost2<- 150000*281.2705
+total_cost2
+
+total_cost - total_benefit # the benefits outweigh the costs where costs - benefits = 34877870 vs 7000000 (VSR program cost)
+
+
 
 ```
 7. Suppose the price of a carbon credit is $Z per ton, at what price Z* will the shipping industry decide to adopt the VSR for purely self-interested reasons? (Note: if ships voluntarily reduce speed, then the $7 million cost (noted above) of implementing the VSR would be avoided)

@@ -128,38 +128,12 @@ $(document).ready(function () {
 </div>
 
 
-% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: Tue, May 21, 2019 - 21:58:38
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu % Date and time: Wed, May 22, 2019 - 18:02:23
 
-<pre class="r"><code>####Explain what the correlation coefficients mean</code></pre>
-<div id="for-every-unit-increase-in-level-of-risk-reduction-the-respondent-is-more-likely-to-vote-yes-by-0.004169-units." class="section level4">
-<h4>For every unit increase in level of risk reduction, the respondent is more likely to vote yes by 0.004169 units.</h4>
-</div>
-<div id="for-every-unit-increase-in-annual-payment-for-the-household-the-respondent-is-less-likely-to-vote-yes-by-0.005865-units." class="section level4">
-<h4>For every unit increase in annual payment for the household, the respondent is less likely to vote yes by 0.005865 units.</h4>
-</div>
-<div id="for-every-unit-increase-in-measure-of-environmental-concern-the-respondent-is-more-likely-to-vote-yes-by-0.083213-units." class="section level4">
-<h4>For every unit increase in measure of environmental concern, the respondent is more likely to vote yes by 0.083213 units.</h4>
-</div>
-<div id="earning-an-income-in-the-one-percent-makes-the-respondent-0.059366-units-more-likely-to-vote-yes." class="section level4">
-<h4>Earning an income in the one-percent makes the respondent 0.059366 units more likely to vote yes.</h4>
-</div>
-<div id="earning-a-poor-income-makes-the-respondent-0.040298-units-more-likely-to-vote-yes." class="section level4">
-<h4>Earning a poor income makes the respondent 0.040298 units more likely to vote yes.</h4>
-</div>
-<div id="earning-a-rich-income-makes-the-respondent-0.060219-units-more-likely-to-vote-yes." class="section level4">
-<h4>Earning a rich income makes the respondent 0.060219 units more likely to vote yes.</h4>
-</div>
-<div id="earning-a-very-rich-income-makes-the-respondent-0.277879-units-more-likely-to-vote-yes." class="section level4">
-<h4>Earning a very rich income makes the respondent 0.277879 units more likely to vote yes.</h4>
-</div>
-<div id="each-unit-increase-in-age-until-30-makes-the-respondent-0.092936-units-more-likely-to-vote-yes." class="section level4">
-<h4>Each unit increase in age until 30 makes the respondent 0.092936 units more likely to vote yes.</h4>
-</div>
-<div id="each-unit-increase-in-age-until-40-makes-the-respondent-0.127045-units-less-likely-to-vote-yes." class="section level4">
-<h4>Each unit increase in age until 40 makes the respondent 0.127045 units less likely to vote yes.</h4>
-</div>
-<div id="each-unit-increase-in-age-until-60-makes-the-respondent-0.107886-units-less-likely-to-vote-yes." class="section level4">
-<h4>Each unit increase in age until 60 makes the respondent 0.107886 units less likely to vote yes.</h4>
+<p>NEED TO PUT IN THE MODEL HERE AND FIGURE OUT HOW TO PUT IT AFTER STARGAZER AND ON 2 LINES</p>
+<div id="explain-what-the-correlation-coefficients-mean" class="section level4">
+<h4>Explain what the correlation coefficients mean</h4>
+<p>STILL NEEED TO PUT IN UPDATED VALUES For every unit increase in level of risk reduction, the respondent is more likely to vote yes by units. ####For every unit increase in annual payment for the household, the respondent is less likely to vote yes by 0.005865 units. ####For every unit increase in measure of environmental concern, the respondent is more likely to vote yes by 0.083213 units. ####Earning an income in the one-percent makes the respondent 0.059366 units more likely to vote yes. ####Earning a poor income makes the respondent 0.040298 units more likely to vote yes. ####Earning a rich income makes the respondent 0.060219 units more likely to vote yes. ####Earning a very rich income makes the respondent 0.277879 units more likely to vote yes. ####Each unit increase in age until 30 makes the respondent 0.092936 units more likely to vote yes. ####Each unit increase in age until 40 makes the respondent 0.127045 units less likely to vote yes. ####Each unit increase in age until 60 makes the respondent 0.107886 units less likely to vote yes.</p>
 <p><span class="math display">\[Odds(Voting Yes) = 0.1197 + \beta_1(Risk) + \beta_2(BID) +  \beta_3 + (NEP)+\beta_4(Income) + \beta_5(Age)\]</span></p>
 </div>
 <div id="section" class="section level4">
@@ -169,37 +143,6 @@ $(document).ready(function () {
 <ol start="2" style="list-style-type: decimal">
 <li>Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deaths avoided) (4% reduction in risk = 1 whale saved)</li>
 </ol>
-</div>
-<div id="r" class="section level1">
-<h1>```{r}</h1>
-</div>
-<div id="a-4-reduction-in-risk-1-whale-saved" class="section level1">
-<h1>A 4% reduction in risk = 1 whale saved</h1>
-</div>
-<div id="to-find-this-out-i-am-changing-the-risk-of-the-3-random-people-looked-at-in-3-and-chaging-the-risk-from-60-64" class="section level1">
-<h1>to find this out I am changing the risk of the 3 random people looked at in #3 and chaging the risk from 60-64</h1>
-</div>
-<div id="their-responding-change-in-bid-should-equal-their-wtp-for-1-whale" class="section level1">
-<h1>their responding change in bid should equal their WTP for 1 whale</h1>
-<p>bid_7(60) # 446.7733 bid_7(64) # 449.5568</p>
-<p>wtp_7&lt;- bid_7(64) - bid_7(60) wtp_7 #2.783438</p>
-<p>wtp_10&lt;- bid_10(64) - bid_10(60) wtp_10 # 2.783438</p>
-<p>wtp_1&lt;- bid_1(64) - bid_1(60) wtp_1 # 2.783438</p>
-</div>
-<div id="the-overall-willingness-to-pay-for-a-whale-in-sb-is-2.783438-this-will-be-consistant-among-all-people-becasue-we-are-using-a-linear-model-lm-not-a-glm" class="section level1">
-<h1>the overall willingness to pay for a whale in SB is 2.783438, this will be consistant among all people becasue we are using a linear model (lm) not a (glm)</h1>
-<ol start="3" style="list-style-type: decimal">
-<li>Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction.</li>
-</ol>
-<pre class="r"><code># not sure whos model to use but for now I will use my regression
-
-###################
-# For this portion put age, NEP, Income, risk (60), and age into the equation
-# next set the equation = nd solve for the bid vlaue
-# once yo have the bid value put all of the inputs into the regression eqaution and solve for vote
-
-# if they are &quot;middle income&quot; put nothing in for income becasue this is the refrence value and is what all of the other incomes are compared to so its beta = 0 
-##################</code></pre>
 <pre class="r"><code># risk = 0.6
 
 # look at person &quot;#7&quot; and plug their info into the regression equation
@@ -254,9 +197,6 @@ bid_1&lt;- function(x){(0.1196977 + 0.0204401*1 + 0.0467922*1 + 0.0158639*15 + 0
 bid_1(60)</code></pre>
 <pre><code>## [1] -28.45266</code></pre>
 <pre class="r"><code># bid = -28.45266</code></pre>
-</div>
-<div id="based-on-this-regression-what-can-you-say-about-the-value-of-a-single-prevented-whale-death-hint-think-about-how-risk-reduction-for-all-whales-translates-into-the-number-of-whale-deathsavoided-4-reduction-in-risk-1-whale-saved" class="section level1">
-<h1>Based on this regression, what can you say about the value of a single prevented whale death? (Hint: Think about how risk reduction for all whales translates into the number of whale deathsavoided) (4% reduction in risk = 1 whale saved)</h1>
 <pre class="r"><code># A 4% reduction in risk = 1 whale saved
 # to find this out I am changing the risk of the 3 random people looked at in #3 and chaging the risk from 60-64
 # their responding change in bid should equal their WTP for 1 whale
@@ -276,6 +216,21 @@ wtp_10 # 2.783438</code></pre>
 wtp_1 # 2.783438</code></pre>
 <pre><code>## [1] 2.783438</code></pre>
 <pre class="r"><code># the overall willingness to pay for a whale in SB is 2.783438, this will be consistant among all people becasue we are using a linear model (lm) not a (glm)</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Pick three arbitrary respondents. For each of those respondents, estimate their WTP for a VSR program offering 60% risk reduction.</li>
+</ol>
+<pre class="r"><code># not sure whos model to use but for now I will use my regression
+
+###################
+# For this portion put age, NEP, Income, risk (60), and age into the equation
+# next set the equation = nd solve for the bid vlaue
+# once yo have the bid value put all of the inputs into the regression eqaution and solve for vote
+
+# if they are &quot;middle income&quot; put nothing in for income becasue this is the refrence value and is what all of the other incomes are compared to so its beta = 0 
+
+
+#basically you already did this above
+##################</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Now repeat this process and estimate the mean WTP for a VSR program offering 60% risk reduction among Santa Barbara County households.</li>
 </ol>
@@ -294,7 +249,7 @@ data_new&lt;- mutate(data, &quot;income_num&quot; = case_when(income == &quot;po
                   &quot;age_num&quot; = case_when(age == &quot;tothirty&quot; ~ 30,
                                   age == &quot;toforty&quot; ~ 40,
                                   age == &quot;tofifty&quot; ~ 50,
-                                  age == &quot;tosixty&quot; ~ 6))
+                                  age == &quot;tosixty&quot; ~ 60))
 data_new</code></pre>
 <pre><code>## # A tibble: 500 x 8
 ##     risk   bid  vote   NEP income      age      income_num age_num
@@ -312,15 +267,16 @@ data_new</code></pre>
 ## # … with 490 more rows</code></pre>
 <pre class="r"><code>#names(data_new)&lt;- c(&quot;risk&quot;, &quot;bid&quot;, &quot;vote&quot;, &quot;nep&quot;, &quot;income&quot;, &quot;age&quot;, &quot;income_num&quot;, &quot;age_num&quot;)
   
-  
-data_table_sum &lt;- data_new %&gt;%
+
+
+data_table_mode &lt;- data_new %&gt;%
   summarise(
     mean_nep = mean(NEP),
     mode_age = mode(age_num),
     mode_income = mode(income_num)
   )
 
-data_table_sum</code></pre>
+data_table_mode</code></pre>
 <pre><code>## # A tibble: 1 x 3
 ##   mean_nep mode_age mode_income
 ##      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      
@@ -337,11 +293,19 @@ data_table_sum</code></pre>
 
 # (bid) = (0.1196977 + 0.0204401(age_30) -0.0201190(age_40) + 0.0099816(age_50)  -0.0162261(age_60) + 0.0027386(poor) + 0.0074891(rich) + 0.0467922(very_rich) + 0.0088282(one_percent) + 0.0158639(NEP) + 0.0007445(risk) - 0.5)/0.0010699
 
+# i don't see income here..
 bid_mean&lt;- function(x){(0.1196977 + 0.0204401*1 + 0.0158639*38.366 + 0.0007445*x - 0.5)/0.0010699}
 
 bid_mean(60)</code></pre>
 <pre><code>## [1] 274.2707</code></pre>
-<pre class="r"><code># avergae WTP = 274.2707</code></pre>
+<pre class="r"><code># avergae WTP = 274.2707
+
+#with income:
+bid_mean_income&lt;- function(x){(0.1196977 + 0.0204401*1 + 0.0158639*38.366 + 0.0074891*1 + 0.0007445*x - 0.5)/0.0010699}
+
+bid_mean_income(60)</code></pre>
+<pre><code>## [1] 281.2705</code></pre>
+<pre class="r"><code>#WTP with &quot;rich&quot; income 281.2705</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>If there are 150,000 households in Santa Barbara County, estimate the total benefit of a VSR program to these households</li>
 </ol>
@@ -357,11 +321,17 @@ total_benefit # total benefit to sb for a 60% reduction is 6262736</code></pre>
 </ol>
 <pre class="r"><code># take the wtp and multiply is by the number of people
 # then compare it to the total benefit solved for in problem 5
+#I'm unsure about the cost. Doesn't it say that its $7 million? I'm confused..
 
 total_cost&lt;- 150000*274.2707
 total_cost</code></pre>
 <pre><code>## [1] 41140605</code></pre>
-<pre class="r"><code>total_cost - total_benefit # the benefits outweigh the costs where costs - benefits = 34877870</code></pre>
+<pre class="r"><code>#or cost = 281.2705
+
+total_cost2&lt;- 150000*281.2705
+total_cost2</code></pre>
+<pre><code>## [1] 42190575</code></pre>
+<pre class="r"><code>total_cost - total_benefit # the benefits outweigh the costs where costs - benefits = 34877870 vs 7000000 (VSR program cost)</code></pre>
 <pre><code>## [1] 34877870</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Suppose the price of a carbon credit is $Z per ton, at what price Z* will the shipping industry decide to adopt the VSR for purely self-interested reasons? (Note: if ships voluntarily reduce speed, then the $7 million cost (noted above) of implementing the VSR would be avoided)</li>

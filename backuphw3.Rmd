@@ -1,11 +1,13 @@
 ---
-title: "HW#3"
-author: "Tyler Cobian"
-date: "5/15/2019"
-output:
-  html_document: default
-  pdf_document: default
+title: "Hwbackupr"
+author: "Sandra Fogg"
+date: "5/22/2019"
+output: html_document
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -283,8 +285,6 @@ cost_per_tonn # 50 dollars per tonn reduced
 total_benefit # 6262736 total social benefit from the program
 
 ```
-
-
 
 
 
